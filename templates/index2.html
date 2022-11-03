@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Bootstrap table filter,sorting,export</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
+<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+<h1>Qmeter Statics</h1>
+
+
+<div id="toolbar">
+		<select class="form-control">
+				<option value="">Export Basic</option>
+				<option value="all">Export All</option>
+				<option value="selected">Export Selected</option>
+		</select>
+</div>
+
+<table id="table" 
+			 data-toggle="table"
+			 data-search="true"
+			 data-filter-control="true" 
+			 data-show-export="true"
+			 data-click-to-select="true"
+			 data-toolbar="#toolbar"
+       class="table-responsive">
+	<thead>
+		<tr>
+			<th data-field="state" data-checkbox="true"></th>
+			<th data-field="bi" data-filter-control="input" data-sortable="true">Branch ID</th>
+			<th data-field="si" data-filter-control="select" data-sortable="true">Service ID</th>
+			<th data-field="ti" data-filter-control="select" data-sortable="true">Ticked ID</th>
+			<th data-field="s_i" data-sortable="true">Staff ID</th>
+			<th data-field="cn" data-filter-control="select" data-sortable="true">Customer Number</th>
+			<th data-field="wt" data-sortable="true">Waiting Time</th>
+			<th data-field="tt" data-sortable="true">Transaction Time</th>
+			<th data-field="fn" data-filter-control="input" data-sortable="true">Full Name</th>
+			<th data-field="mail" data-filter-control="select" data-sortable="true">Customer Email</th>
+			<th data-field="gn" data-filter-control="select" data-sortable="true">Gender</th>
+			<th data-field="ar" data-filter-control="select" data-sortable="true">Age Range</th>
+			<th data-field="cm" data-filter-control="input" data-sortable="true">Comment</th>
+		
+
+
+
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for object in obj %}
+		<tr>
+			<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+			<td>{{object.branch_id}}</td>
+			<td>{{object.service_id}}</td>
+			<td>{{object.ticked_id}}</td>
+			<td>{{object.staff_id}}</td>
+			<td>{{object.customer_number}}</td>
+			<td>{{object.waiting_time}}</td>
+			<td>{{object.transaction_time}}</td>
+			<td>{{object.personal_info.full_name}}</td>
+			<td>{{object.personal_info.email}}</td>
+			<td>{{object.personal_info.gender}}</td>
+			<td>{{object.personal_info.age_range}}</td>
+			<td>{{object.personal_info.comment}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js'></script>
+<script src='https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
